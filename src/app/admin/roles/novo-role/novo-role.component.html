@@ -1,0 +1,12 @@
+
+<form #f="ngForm" (ngSubmit)="salvar(f.value)" >
+  <div class="form-group">
+    <label for="nome">Nome</label>
+    <input #nome="ngModel" [(ngModel)]="rol.nome" name="nome" id="nome" type="text" class="form-control" required>
+    <div class="alert alert-danger" *ngIf="nome.touched && nome.invalid">
+      Nome e Requerido
+    </div>
+  </div>
+  <button class="btn btn-primary">Salvar</button>
+  <button type="button" (click)="delete()" class="btn btn-danger">Eliminar</button>
+</form>

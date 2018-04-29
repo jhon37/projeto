@@ -1,0 +1,31 @@
+
+<form #f="ngForm" (ngSubmit)="salvar(f.value)" >
+  <div class="form-group">
+    <label for="nome">Nome</label>
+    <input #nome="ngModel" [(ngModel)]="usuario.nome" name="nome" id="nome" type="text" class="form-control" required>
+    <div class="alert alert-danger" *ngIf="nome.touched && nome.invalid">
+      Nome e Requerido
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="login">Login</label>
+    <input #login="ngModel" [(ngModel)]="usuario.login" name="login" id="login" type="text" class="form-control" required>
+    <div class="alert alert-danger" *ngIf="login.touched && login.invalid">
+        Login e Requerido
+      </div>
+  </div>
+  <div class="form-group">
+    <label for="roles">Roles</label>
+    <select #roles="ngModel" [(ngModel)]="usuario.roles" name="roles" id="roles" class="form-control" required>
+      <option value=""></option>
+      <option *ngFor="let r of roles$ | async" [value]="r.nome">
+        {{ r.nome }}
+      </option>
+    </select>
+    <div class="alert alert-danger" *ngIf="roles.touched && roles.invalid">
+        Rol e Requerido
+      </div>
+  </div>
+  <button class="btn btn-primary">Salvar</button>
+  <button type="button" (click)="delete()" class="btn btn-danger">Eliminar</button>
+</form>
